@@ -17,10 +17,11 @@ F_CPU        = 16000000
 F_USB        = $(F_CPU)
 OPTIMIZATION = s
 TARGET       = Joystick
-SRC          = $(TARGET).c Descriptors.c image.c $(LUFA_SRC_USB)
+SRC          = $(TARGET).c Descriptors.c $(LUFA_SRC_USB) uart/uart.c
 LUFA_PATH    = ../LUFA/LUFA
-CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/
-LD_FLAGS     =
+CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/ -Iuart/ -L/nix/store/sqxw9adr1njd6lhpklblz32kcvli8iks-avr-libc-2.0.0/avr/lib/avr51 -B/nix/store/sqxw9adr1njd6lhpklblz32kcvli8iks-avr-libc-2.0.0/avr/lib/avr51 -I/nix/store/sqxw9adr1njd6lhpklblz32kcvli8iks-avr-libc-2.0.0/avr/include
+CPP_STANDARD = gnu++11
+LD_FLAGS     = -L/nix/store/sqxw9adr1njd6lhpklblz32kcvli8iks-avr-libc-2.0.0/avr/lib/avr51 -B/nix/store/sqxw9adr1njd6lhpklblz32kcvli8iks-avr-libc-2.0.0/avr/lib/avr51
 
 # Default target
 all:
